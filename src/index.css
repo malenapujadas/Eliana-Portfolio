@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  /* Acá definimos las tipografías de tu clienta para que Tailwind las reconozca */
+  --font-sans: "Inter", sans-serif;
+  --font-cutive: "Cutive", serif;
+}

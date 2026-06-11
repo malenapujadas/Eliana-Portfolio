@@ -1,0 +1,85 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight - 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <nav 
+        className={`fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-5xl rounded-full backdrop-blur-md border px-6 md:px-8 py-3 md:py-4 flex justify-between items-center z-50 transition-all duration-500 ${
+          isScrolled && !isMenuOpen
+            ? 'bg-black/5 border-black/10 text-black/80' 
+            : 'bg-white/10 border-white/20 text-white/80'
+        }`}
+      >
+        {/* LINKS DESKTOP */}
+        <div className="hidden md:flex gap-8 text-sm tracking-widest lowercase">
+          <a href="#inicio" className="hover:text-[#b895d3] transition-colors duration-300">inicio</a>
+          <a href="#experiencia" className="hover:text-[#b895d3] transition-colors duration-300">experiencia</a>
+          <a href="#obsesiones" className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</a>
+          <Link to="/contacto" className="hover:text-[#b895d3] transition-colors duration-300">contacto</Link>
+        </div>
+
+        {/* BOTÓN MOBILE (Menú) */}
+        <div className="md:hidden flex-grow flex justify-start">
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="text-sm tracking-widest lowercase font-sans hover:text-[#b895d3] transition-colors"
+          >
+            menú
+          </button>
+        </div>
+        
+        {/* ICONOS (Se ven en ambos) */}
+        <div className="flex gap-4 md:gap-5 items-center">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+          </a>
+          <Link to="/contacto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+          </Link>
+        </div>
+      </nav>
+
+      {/* OVERLAY MENÚ MOBILE */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            className="fixed inset-0 z-[60] bg-[#111]/90 flex flex-col items-center justify-center"
+          >
+            <button 
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-8 right-8 text-white/50 hover:text-white"
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div className="flex flex-col gap-8 text-center text-3xl font-sans font-light lowercase text-white">
+              <a href="#inicio" onClick={() => setIsMenuOpen(false)}>inicio</a>
+              <a href="#experiencia" onClick={() => setIsMenuOpen(false)}>experiencia</a>
+              <a href="#obsesiones" onClick={() => setIsMenuOpen(false)}>obsesiones</a>
+              <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>contacto</Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
