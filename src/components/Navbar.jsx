@@ -1,37 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro
+  const isLightPage = location.pathname.includes('/obra-escrita');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight - 50) {
+      // Si estamos en el home, esperamos a pasar el Hero. 
+      // Si estamos en otra página, el umbral es mucho menor.
+      const scrollThreshold = location.pathname === '/' ? window.innerHeight - 50 : 50;
+      
+      if (window.scrollY > scrollThreshold) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
+
+    // Ejecutamos una vez al montar por si el usuario recarga la página a la mitad
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  // Esta variable decide el color final evaluando el scroll y en qué página estamos
+  const shouldBeDarkText = (isScrolled || isLightPage) && !isMenuOpen;
 
   return (
     <>
       <nav 
         className={`fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-5xl rounded-full backdrop-blur-md border px-6 md:px-8 py-3 md:py-4 flex justify-between items-center z-50 transition-all duration-500 ${
-          isScrolled && !isMenuOpen
+          shouldBeDarkText
             ? 'bg-black/5 border-black/10 text-black/80' 
             : 'bg-white/10 border-white/20 text-white/80'
         }`}
       >
         {/* LINKS DESKTOP */}
         <div className="hidden md:flex gap-8 text-sm tracking-widest lowercase">
-          <a href="#inicio" className="hover:text-[#b895d3] transition-colors duration-300">inicio</a>
-          <a href="#experiencia" className="hover:text-[#b895d3] transition-colors duration-300">experiencia</a>
-          <a href="#obsesiones" className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</a>
+          {/* Agregamos la "/" antes del # para que puedan navegar desde otras páginas */}
+          <a href="/#inicio" className="hover:text-[#b895d3] transition-colors duration-300">inicio</a>
+          <a href="/#experiencia" className="hover:text-[#b895d3] transition-colors duration-300">experiencia</a>
+          <a href="/#obsesiones" className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</a>
           <Link to="/contacto" className="hover:text-[#b895d3] transition-colors duration-300">contacto</Link>
         </div>
 
@@ -72,9 +88,9 @@ export const Navbar = () => {
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <div className="flex flex-col gap-8 text-center text-3xl font-sans font-light lowercase text-white">
-              <a href="#inicio" onClick={() => setIsMenuOpen(false)}>inicio</a>
-              <a href="#experiencia" onClick={() => setIsMenuOpen(false)}>experiencia</a>
-              <a href="#obsesiones" onClick={() => setIsMenuOpen(false)}>obsesiones</a>
+              <a href="/#inicio" onClick={() => setIsMenuOpen(false)}>inicio</a>
+              <a href="/#experiencia" onClick={() => setIsMenuOpen(false)}>experiencia</a>
+              <a href="/#obsesiones" onClick={() => setIsMenuOpen(false)}>obsesiones</a>
               <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>contacto</Link>
             </div>
           </motion.div>
