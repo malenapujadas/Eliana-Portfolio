@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Home } from './pages/Home';
 import { Contact } from './pages/Contact';
 import { ObraEscrita } from './pages/ObraEscrita'; 
+import { Revistas } from './pages/Revistas';
 
 function App() {
   return (
@@ -15,9 +16,12 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            
-            {/* <-- 2. Reemplazar la ruta acá */}
+          
             <Route path="/obra-escrita" element={<ObraEscrita />} /> 
+            
+            <Route path="/obra-escrita/revistas" element={<Revistas />} /> 
+            <Route path="/obra-escrita/libros" element={<div className="min-h-screen"></div>} />
+            <Route path="/obra-escrita/antologias" element={<div className="min-h-screen"></div>} />
             
             <Route path="/en-voz-alta" element={<div className="min-h-screen"></div>} />
             <Route path="/resonancias" element={<div className="min-h-screen"></div>} />
