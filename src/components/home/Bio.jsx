@@ -18,7 +18,7 @@ export const Bio = () => {
 
   return (
     <section 
-      id="experiencia" 
+      id="impertinencia" 
       // px-6 y py-20 es para celular, md:p-24 es para escritorio
       className="relative w-full min-h-screen flex items-center justify-center px-6 py-20 md:p-24 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/fondo-manteca.png')" }}
@@ -40,15 +40,21 @@ export const Bio = () => {
           >
             impertinencia poética
           </motion.h3>
+          
 
           {/* Párrafo con las palabras clave destacadas */}
           <motion.p 
             variants={itemVariants}
             className="text-lg md:text-2xl font-sans text-black/80 leading-relaxed font-light"
           >
-            artista de la palabra y las contradicciones. gestora del encuentro, la escucha y la <span className="text-[#b895d3] italic font-medium">incomodidad del cuerpo deseante</span>, vivo. inclinada al cambio que traen las aliteraciones de los ciclos. propensa a frecuentar el capricho de toda norma. tiene un magister en escritura creativa y un título de licenciada en economía. <strong className="text-black font-semibold">no es ni magister ni economista.</strong> el <span className="text-[#b895d3] italic font-medium">juego serio del lenguaje</span>, ante todo, juego.
+            frecuentar el <strong className="text-black font-semibold">capricho</strong> de toda norma
             <br /><br />
-            busca recordarse que por ahora solo hay una vida.
+            cada palabra<br />
+            es <span className="text-[#b895d3] italic font-medium">pista</span><br />
+            de una pregunta
+            <br /><br />
+            es la <strong className="text-black font-semibold">pasión</strong> la que nos tiene<br />
+            <span className="text-[#b895d3] italic font-medium">no nosotrxs a ella</span>
           </motion.p>
         </motion.div>
 

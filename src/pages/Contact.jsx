@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const Contact = () => {
-  // Estado para guardar los datos del formulario
   const [formData, setFormData] = useState({
     name: '',
     reason: '',
@@ -11,7 +10,6 @@ export const Contact = () => {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Función para actualizar el estado cuando el usuario escribe
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -19,17 +17,16 @@ export const Contact = () => {
     });
   };
 
-  // Función que se ejecuta al enviar el formulario
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Acá en el futuro conectaremos EmailJS o Formspree
     console.log('Datos listos para enviar:', formData);
     setIsSubmitted(true);
   };
 
   return (
     <section 
-      className="relative w-full min-h-screen flex items-center justify-center px-6 py-32 md:p-24 bg-cover bg-center bg-no-repeat"
+      // Agregamos overflow-x-hidden para garantizar que nada ensanche la pantalla
+      className="relative w-full min-h-screen flex items-center justify-center px-6 py-32 md:p-24 bg-cover bg-center bg-no-repeat overflow-x-hidden"
       style={{ backgroundImage: "url('/fondo-manteca.png')" }}
     >
       <div className="w-full max-w-4xl relative z-10">
@@ -45,7 +42,6 @@ export const Contact = () => {
 
           {!isSubmitted ? (
             <form onSubmit={handleSubmit} className="w-full">
-              {/* El Formulario de Lenguaje Natural */}
               <p className="text-3xl md:text-5xl lg:text-6xl font-sans text-black leading-snug md:leading-relaxed font-light">
                 Hola Eliana. Mi nombre es{' '}
                 <input
@@ -55,7 +51,8 @@ export const Contact = () => {
                   onChange={handleChange}
                   placeholder="tu nombre"
                   required
-                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[200px] md:w-[300px]"
+                  // Ajuste: achicamos el w base en mobile y agregamos max-w-[80vw]
+                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[150px] md:w-[350px] max-w-[80vw]"
                 />
                 , estuve recorriendo tu sitio y me pareció un baile. Te escribo porque{' '}
                 <input
@@ -65,7 +62,8 @@ export const Contact = () => {
                   onChange={handleChange}
                   placeholder="quiero invitarte a..."
                   required
-                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[250px] md:w-[400px]"
+                  // Ajuste: w-[200px] en celular, crece a 500px en compu, y nunca pasa del 80% del viewport
+                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[200px] md:w-[500px] max-w-[80vw]"
                 />
                 . Me encantaría que sigamos hablando, podés contestarme a mi correo:{' '}
                 <input
@@ -75,23 +73,32 @@ export const Contact = () => {
                   onChange={handleChange}
                   placeholder="tu@email.com"
                   required
-                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[220px] md:w-[350px]"
+                  // Ajuste: w-[180px] base en celular
+                  className="bg-transparent border-b-2 border-black/20 focus:border-[#b895d3] outline-none text-center font-cutive text-[#b895d3] placeholder:text-black/20 placeholder:font-sans transition-colors w-[180px] md:w-[400px] max-w-[80vw]"
                 />
                 .
               </p>
 
-              {/* Botón de Enviar */}
-              <div className="mt-16 flex justify-end">
+              <div className="mt-16 flex flex-col md:flex-row items-center justify-end gap-8">
+                
+                <a 
+                  href="/cv-eliana.pdf" 
+                  download="Eliana_Tomassini_CV.pdf"
+                  className="font-sans text-lg md:text-xl text-black/50 hover:text-[#b895d3] hover:italic transition-all duration-300 underline underline-offset-4"
+                >
+                  o descargar cv
+                </a>
+
                 <button 
                   type="submit"
                   className="font-sans text-xl md:text-3xl border border-black rounded-full px-8 md:px-12 py-3 md:py-4 hover:bg-[#b895d3] hover:text-white hover:border-[#b895d3] transition-all duration-300"
                 >
                   Enviar mensaje
                 </button>
+                
               </div>
             </form>
           ) : (
-            // Mensaje de éxito disruptivo
             <motion.div 
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 

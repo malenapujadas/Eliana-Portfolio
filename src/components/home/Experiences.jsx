@@ -39,17 +39,20 @@ export const Experiences = () => {
           />
 
           {/* Contenedor absoluto para los links */}
+          {/* Contenedor absoluto para los links - AHORA ABAJO A LA DERECHA */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="absolute top-0 left-0 w-full h-full flex flex-col justify-center pl-[10%] md:pl-[20%] gap-8 md:gap-16"
+            // Cambiamos la alineación: justify-end (abajo) e items-end (derecha)
+            className="absolute top-0 left-0 w-full h-full flex flex-col justify-end items-end pb-[15%] pr-[10%] md:pb-[8%] md:pr-[12%] gap-6 md:gap-10"
           >
             <motion.div variants={linkVariants}>
               <Link 
                 to="/obra-escrita" 
-                className="text-white/90 font-sans text-xl md:text-3xl lg:text-4xl hover:font-bold hover:underline underline-offset-8 transition-all duration-300"
+                // Agregamos drop-shadow-lg para que despegue del fondo gris
+                className="text-white drop-shadow-lg font-sans text-2xl md:text-4xl lg:text-5xl hover:font-bold hover:underline underline-offset-8 hover:text-[#b895d3] transition-all duration-300"
               >
                 obra escrita
               </Link>
@@ -58,7 +61,7 @@ export const Experiences = () => {
             <motion.div variants={linkVariants}>
               <Link 
                 to="/en-voz-alta" 
-                className="text-white/90 font-sans text-xl md:text-3xl lg:text-4xl hover:font-bold hover:underline underline-offset-8 transition-all duration-300"
+                className="text-white drop-shadow-lg font-sans text-2xl md:text-4xl lg:text-5xl hover:font-bold hover:underline underline-offset-8 hover:text-[#b895d3] transition-all duration-300"
               >
                 en voz alta
               </Link>
@@ -67,7 +70,7 @@ export const Experiences = () => {
             <motion.div variants={linkVariants}>
               <Link 
                 to="/resonancias" 
-                className="text-white/90 font-sans text-xl md:text-3xl lg:text-4xl hover:font-bold hover:underline underline-offset-8 transition-all duration-300"
+                className="text-white drop-shadow-lg font-sans text-2xl md:text-4xl lg:text-5xl hover:font-bold hover:underline underline-offset-8 hover:text-[#b895d3] transition-all duration-300"
               >
                 resonancias
               </Link>

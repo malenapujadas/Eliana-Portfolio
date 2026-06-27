@@ -24,17 +24,20 @@ export const Footer = () => {
           {/* Email */}
           <div className="border-b border-black/30 pb-4 flex justify-start">
             <a 
-              href="mailto:elianatomassini9@gmail.com" 
+              href="mailto:elitomassini8@gmail.com" 
               className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
             >
-              elianatomassini9@gmail.com
+              elitomassini8@gmail.com
             </a>
           </div>
 
           {/* Teléfono alineado a la derecha como en tu diseño */}
           <div className="border-b border-black/30 pb-4 flex justify-end">
             <a 
-              href="tel:+541125259843" 
+              href="https://wa.me/541125259843" 
+              target="_blank" 
+              rel="noreferrer"
+              title="Enviar WhatsApp"
               className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
             >
               1125259843
@@ -50,6 +53,17 @@ export const Footer = () => {
               className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
             >
               @manijasuelta
+            </a>
+          </div>
+
+          {/* Descargar CV */}
+          <div className="border-b border-black/30 pb-4 flex justify-end">
+            <a 
+              href="/cv-eliana.pdf" 
+              download="Eliana_Tomassini_CV.pdf"
+              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
+            >
+              descargar cv
             </a>
           </div>
 

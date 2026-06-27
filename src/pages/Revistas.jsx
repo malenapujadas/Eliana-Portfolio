@@ -175,9 +175,9 @@ export const Revistas = () => {
                   "{item.titulo}"
                 </p>
                 
-                <p className="text-lg md:text-xl font-sans text-black/80 font-light leading-relaxed mb-12">
+                {/* <p className="text-lg md:text-xl font-sans text-black/80 font-light leading-relaxed mb-12">
                   {item.description}
-                </p>
+                </p> */}
                 
                 <a 
                   href={item.link} 

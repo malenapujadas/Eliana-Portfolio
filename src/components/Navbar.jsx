@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const location = useLocation();
+  const navigate = useNavigate(); // Herramienta para navegar entre páginas
 
   // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro
-  const isLightPage = location.pathname.includes('/obra-escrita');
-
+  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
   useEffect(() => {
     const handleScroll = () => {
       // Si estamos en el home, esperamos a pasar el Hero. 
@@ -30,6 +31,23 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
+  // NUEVO: La función inteligente que decide cómo navegar
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault(); 
+    setIsMenuOpen(false); 
+
+    if (location.pathname === '/') {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else if (targetId === 'inicio') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/#${targetId}`);
+    }
+  };
+
   // Esta variable decide el color final evaluando el scroll y en qué página estamos
   const shouldBeDarkText = (isScrolled || isLightPage) && !isMenuOpen;
 
@@ -44,10 +62,10 @@ export const Navbar = () => {
       >
         {/* LINKS DESKTOP */}
         <div className="hidden md:flex gap-8 text-sm tracking-widest lowercase">
-          {/* Agregamos la "/" antes del # para que puedan navegar desde otras páginas */}
-          <a href="/#inicio" className="hover:text-[#b895d3] transition-colors duration-300">inicio</a>
-          <a href="/#experiencia" className="hover:text-[#b895d3] transition-colors duration-300">experiencia</a>
-          <a href="/#obsesiones" className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</a>
+          {/* Cambiamos las etiquetas <a> por <button> que llaman a nuestra función */}
+          <button onClick={(e) => handleNavClick(e, 'inicio')} className="hover:text-[#b895d3] transition-colors duration-300">inicio</button>
+          <button onClick={(e) => handleNavClick(e, 'obsesiones')} className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</button>
+          <Link to="/peripecias" className="hover:text-[#b895d3] transition-colors duration-300">peripecias</Link>
           <Link to="/contacto" className="hover:text-[#b895d3] transition-colors duration-300">contacto</Link>
         </div>
 
@@ -63,12 +81,28 @@ export const Navbar = () => {
         
         {/* ICONOS (Se ven en ambos) */}
         <div className="flex gap-4 md:gap-5 items-center">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">
+          {/* Icono de Email */}
+          <a href="mailto:elitomassini8@gmail.com" title="Enviar correo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+
+          {/* Icono de Descargar CV */}
+          <a href="/cv-eliana.pdf" download="Eliana_Tomassini_CV.pdf" title="Descargar CV">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </a>
+          {/* Icono de IG */}
+          <a href="https://instagram.com/manijasuelta"  target="_blank" rel="noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
-          <Link to="/contacto">
+          {/* Icono de mensaje */}
+          <a 
+            href="https://wa.me/541125259843" 
+            target="_blank" 
+            rel="noreferrer"
+            title="Enviar WhatsApp"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-          </Link>
+          </a>
         </div>
       </nav>
 
@@ -88,9 +122,10 @@ export const Navbar = () => {
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <div className="flex flex-col gap-8 text-center text-3xl font-sans font-light lowercase text-white">
-              <a href="/#inicio" onClick={() => setIsMenuOpen(false)}>inicio</a>
-              <a href="/#experiencia" onClick={() => setIsMenuOpen(false)}>experiencia</a>
-              <a href="/#obsesiones" onClick={() => setIsMenuOpen(false)}>obsesiones</a>
+              {/* Actualizamos también los botones de mobile */}
+              <button onClick={(e) => handleNavClick(e, 'inicio')}>inicio</button>
+              <button onClick={(e) => handleNavClick(e, 'obsesiones')}>obsesiones</button>
+              <Link to="/peripecias" onClick={() => setIsMenuOpen(false)}>peripecias</Link>
               <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>contacto</Link>
             </div>
           </motion.div>
@@ -98,4 +133,4 @@ export const Navbar = () => {
       </AnimatePresence>
     </>
   );
-};
+}
