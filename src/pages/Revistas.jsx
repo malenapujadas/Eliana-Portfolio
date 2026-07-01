@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll } from 'framer-motion';
+import { SubMenuObra } from '../components/SubMenuObra';
 
 export const Revistas = () => {
   const [activeTab, setActiveTab] = useState('poesia');
@@ -105,6 +106,7 @@ export const Revistas = () => {
 
   return (
     <div className="relative w-full min-h-screen">
+      <SubMenuObra/>
       
       {/* FONDO CORREGIDO: Usamos z-0 en lugar de -z-10 para tapar el negro, sin pisar el contenido */}
       <div 

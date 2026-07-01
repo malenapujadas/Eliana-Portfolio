@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { SubMenuObra } from '../components/SubMenuObra';
 
 export const Libros = () => {
   // Animación de entrada suave
@@ -9,7 +10,7 @@ export const Libros = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen pb-32">
+    <div className="relative w-full min-h-screen">
       
       {/* EL FONDO MANTECA */}
       <div 
@@ -17,8 +18,8 @@ export const Libros = () => {
         style={{ backgroundImage: "url('/fondo-manteca.png')" }}
       ></div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-40">
-        
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
+        <SubMenuObra />
         {/* =========================================
             LIBRO 2: PRIMERA DISTANCIA (NUEVO)
             

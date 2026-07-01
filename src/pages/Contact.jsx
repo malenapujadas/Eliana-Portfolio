@@ -81,13 +81,6 @@ export const Contact = () => {
 
               <div className="mt-16 flex flex-col md:flex-row items-center justify-end gap-8">
                 
-                <a 
-                  href="/cv-eliana.pdf" 
-                  download="Eliana_Tomassini_CV.pdf"
-                  className="font-sans text-lg md:text-xl text-black/50 hover:text-[#b895d3] hover:italic transition-all duration-300 underline underline-offset-4"
-                >
-                  o descargar cv
-                </a>
 
                 <button 
                   type="submit"
@@ -95,6 +88,14 @@ export const Contact = () => {
                 >
                   Enviar mensaje
                 </button>
+
+                <a 
+                  href="/cv-eliana.pdf" 
+                  download="Eliana_Tomassini_CV.pdf"
+                  className="font-sans text-lg md:text-xl text-black/50 hover:text-[#b895d3] hover:italic transition-all duration-300 underline underline-offset-4"
+                >
+                  o descargar cv
+                </a>
                 
               </div>
             </form>
