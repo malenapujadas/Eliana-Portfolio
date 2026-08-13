@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Importamos useLocation
 import { Hero } from '../components/home/Hero';
 import { Profile } from '../components/home/Profile';

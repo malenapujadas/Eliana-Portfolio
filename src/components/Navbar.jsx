@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,7 +10,7 @@ export const Navbar = () => {
   const navigate = useNavigate(); // Herramienta para navegar entre páginas
 
   // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro
-  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
+  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/voz-alta') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
   useEffect(() => {
     const handleScroll = () => {
       // Si estamos en el home, esperamos a pasar el Hero. 
@@ -70,7 +70,7 @@ export const Navbar = () => {
         </div>
 
         {/* BOTÓN MOBILE (Menú) */}
-        <div className="md:hidden flex-grow flex justify-start">
+        <div className="md:hidden grow flex justify-start">
           <button 
             onClick={() => setIsMenuOpen(true)}
             className="text-sm tracking-widest lowercase font-sans hover:text-[#b895d3] transition-colors"
@@ -113,7 +113,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-[60] bg-[#111]/90 flex flex-col items-center justify-center"
+            className="fixed inset-0 z-60 bg-[#111]/90 flex flex-col items-center justify-center"
           >
             <button 
               onClick={() => setIsMenuOpen(false)}

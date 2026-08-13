@@ -1,103 +1,243 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AccordionSection, ObraCard, CARDS_GRID } from '../components/Accordion';
+
+// === DATOS ===
+// Misma información que antes vivía en Libros.jsx / Revistas.jsx / Antologias.jsx,
+// solo reordenada para el formato de tarjetita (imagen + etiqueta + título).
+
+const LIBROS = [
+  {
+    id: 'primera-distancia',
+    img: '/distancia-1.jpeg',
+    topLabel: 'Enero editorial, 2026',
+    mainLabel: 'Primera distancia',
+    badge: 'Próximo lanzamiento',
+    link: 'https://www.eneroeditorial.com/libro.php?id=88',
+    actionLabel: 'Ver en editorial'
+  },
+  {
+    id: 'intimidad',
+    img: '/intimidad-1.jpg',
+    topLabel: 'Alción editora, 2019',
+    mainLabel: 'Algún recuerdo de Intimidad',
+    link: 'https://alcioneditora.com.ar/productos/algun-recuerdo-de-intimidad/',
+    actionLabel: 'Comprar'
+  }
+];
+
+const POESIA = [
+  {
+    id: 'santa-rabia',
+    revista: 'Santa Rabia Poetry',
+    pais: 'Perú',
+    titulo: 'La caricia de una fe en su fértil baldío',
+    link: 'https://santarabiapoetry.com/52-ano-9-eliana-tomassini-la-caricia-de-una-fe-en-su-fertil-baldio/'
+  },
+  {
+    id: 'buenos-aires',
+    revista: 'Buenos Aires Poetry',
+    pais: 'Argentina',
+    titulo: 'Aliteraciones de la noche',
+    link: 'https://buenosairespoetry.com/2024/08/26/aliteraciones-de-la-noche-eliana-tomassini/'
+  },
+  {
+    id: 'giros-poesia',
+    revista: 'Giros',
+    pais: 'Argentina',
+    titulo: 'Dos poemas',
+    link: 'https://revistagiros.com/dos-poemas-eliana-tomassini'
+  },
+  {
+    id: 'montaje',
+    revista: 'Montaje',
+    pais: 'Chile',
+    titulo: 'Poesía',
+    link: 'https://revistamontaje.cl/poesia-eliana-tomassini/'
+  },
+  {
+    id: 'casa-pais',
+    revista: 'Casa País',
+    pais: 'Uruguay y Argentina',
+    titulo: 'Faro Fantasma',
+    link: 'https://www.casapais.org/faro-fantasma/eliana-tomassini'
+  },
+  {
+    id: 'pasajes',
+    revista: 'Pasajes',
+    pais: 'Francia',
+    titulo: 'Obsesión y cordialidad',
+    link: 'https://revista-pasajes.com/2025/03/31/obsesion-y-cordialidad-dos-poemas/'
+  },
+  {
+    id: 'flor-ave',
+    revista: 'Flor de ave',
+    pais: 'Argentina',
+    titulo: 'Poemas',
+    link: 'https://flordeave.com.ar/poemas-de-eliana-tomassini/'
+  }
+].map((item) => ({
+  id: item.id,
+  img: `/${item.id}.png`,
+  topLabel: item.revista,
+  accentLabel: item.pais,
+  mainLabel: item.titulo,
+  link: item.link,
+  actionLabel: 'Leer publicación'
+}));
+
+const ENSAYO = [
+  {
+    id: 'aspera',
+    revista: 'Áspera',
+    titulo: 'Un plancito para el finde',
+    link: 'https://medium.com/@asperarevista/un-plancito-para-el-finde-8f11e364faf6'
+  },
+  {
+    id: 'las-olas',
+    revista: 'Las Olas',
+    titulo: 'Un abismo al que dicen cielo',
+    link: 'https://www.revistalasolas.com/revista'
+  },
+  {
+    id: 'giros-ensayo',
+    revista: 'Giros',
+    titulo: 'Adorable mundo, a vos te espío',
+    link: 'https://revistagiros.com/adorable-mundo-a-vos-te-espio'
+  },
+  /* {
+    id: 'gambito',
+    revista: 'Gambito',
+    titulo: 'De la impertinencia poética',
+    link: '#'
+  } */
+].map((item) => ({
+  id: item.id,
+  img: `/${item.id}.png`,
+  topLabel: item.revista,
+  mainLabel: item.titulo,
+  link: item.link,
+  actionLabel: 'Leer publicación'
+}));
+
+const ANTOLOGIAS = [
+  {
+    id: 'diana',
+    titulo: 'Diana',
+    homenaje: 'Homenaje a Diana Bellessi',
+    editorial: 'Camalote ediciones',
+    link: 'https://www.lanacion.com.ar/cultura/diana-bellessi-la-vida-pende-de-un-hilo-y-el-poema-tambien-nid30052025/'
+  },
+  {
+    id: 'juanele',
+    titulo: 'Juanele',
+    homenaje: 'Homenaje a Juan L. Ortiz',
+    editorial: 'Camalote ediciones',
+    link: 'https://www.lanacion.com.ar/cultura/a-130-anos-de-su-nacimiento-publican-una-coleccion-con-los-libros-de-juan-l-ortiz-nid11062026/'
+  },
+  {
+    id: 'emma',
+    titulo: 'Emma',
+    homenaje: 'Homenaje a Emma Barendeguy',
+    editorial: 'Camalote ediciones',
+    link: 'https://salvajefederal.com/productos/emma-poetas-argentinxs-homenajean-a-emma-barrandeguy-aa-vv/'
+  },
+  {
+    id: 'ninez',
+    titulo: 'Niñez',
+    homenaje: '100 poemas sobre la niñez',
+    editorial: 'Camalote ediciones',
+    link: 'https://www.lanacion.com.ar/cultura/con-manto-sutil-cien-poemas-sobre-la-ninez-de-autores-argentinos-de-todas-las-latitudes-nid20072023/'
+  },
+  {
+    id: 'otras-nosotras',
+    titulo: 'Otras nosotras mismas',
+    homenaje: 'Homenaje a Olga Orozco',
+    editorial: 'Agua viva ediciones',
+    link: 'https://salvajefederal.com/productos/otras-nosotras-mismas-antologia-en-homenaje-a-olga-orozco-aa-vv/'
+  }
+].map((item) => ({
+  id: item.id,
+  img: `/${item.id}.png`,
+  topLabel: item.editorial,
+  accentLabel: item.titulo,
+  mainLabel: item.homenaje,
+  link: item.link,
+  actionLabel: 'Leer publicación'
+}));
 
 export const ObraEscrita = () => {
-  const [hovered, setHovered] = useState(null);
+  // Arranca con "antologías" abierta: así se ven de entrada las 3 cabeceras superpuestas
+  const [openSection, setOpenSection] = useState('antologias');
 
-  const containerVars = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-  };
-
-  const itemVars = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+  const toggle = (id) => setOpenSection((prev) => (prev === id ? null : id));
 
   return (
-    <section 
-      className="relative w-full min-h-screen pt-40 pb-20 px-6 md:px-12 flex items-center justify-center bg-cover bg-center bg-no-repeat overflow-hidden"
+    <section
+      className="relative w-full min-h-screen pt-32 md:pt-40 pb-24 px-6 md:px-12 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/fondo-manteca.png')" }}
     >
-      <motion.div 
-        variants={containerVars}
-        initial="hidden"
-        animate="visible"
-        className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-8 items-center"
-      >
-        
-        {/* BLOQUE 1: LIBROS */}
-        <motion.div 
-          variants={itemVars}
-          className="relative flex flex-col justify-end items-center md:items-start group md:mt-32"
-          onMouseEnter={() => setHovered('libros')}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <Link to="/obra-escrita/libros" className="relative w-full md:w-11/12 aspect-[4/3] block">
-            <h2 className="absolute -top-10 md:-top-12 left-0 md:-left-4 text-5xl md:text-6xl lg:text-7xl font-sans font-bold text-[#111] z-20 group-hover:italic transition-all duration-500 uppercase tracking-tighter">
-              Libros
-            </h2>
-            <div className="w-full h-full overflow-hidden shadow-2xl bg-gray-200">
-              <img 
-                src="/libros.png" 
-                alt="Libros" 
-                className={`w-full h-full object-cover transition-all duration-700 ease-in-out transform ${
-                  hovered === 'libros' ? 'grayscale-0 scale-105' : 'grayscale'
-                }`}
-              />
-            </div>
-          </Link>
-        </motion.div>
+      <div className="w-full max-w-6xl mx-auto">
 
-        {/* BLOQUE 2: REVISTAS */}
-        <motion.div 
-          variants={itemVars}
-          className="relative flex flex-col justify-start items-center group md:-mt-0"
-          onMouseEnter={() => setHovered('revistas')}
-          onMouseLeave={() => setHovered(null)}
+        <Link
+          to="/#obsesiones"
+          className="inline-flex items-center gap-2 mb-8 md:mb-12 text-xs md:text-sm font-sans tracking-widest lowercase text-black/40 hover:text-[#b895d3] transition-colors duration-300"
         >
-          {/* Ajusté el ancho a w-10/12 para que no sea tan gigante */}
-          <Link to="/obra-escrita/revistas" className="relative w-full md:w-10/12 aspect-[2/3] block">
-            <h2 className="absolute -top-10 md:-top-12 left-1/2 transform -translate-x-1/2 text-5xl md:text-6xl lg:text-7xl font-sans font-bold text-[#111] z-20 group-hover:italic transition-all duration-500 uppercase tracking-tighter">
-              Revistas
-            </h2>
-            <div className="w-full h-full overflow-hidden shadow-2xl bg-gray-200">
-              <img 
-                src="/revistas.png" 
-                alt="Revistas" 
-                className={`w-full h-full object-cover transition-all duration-700 ease-in-out transform ${
-                  hovered === 'revistas' ? 'grayscale-0 scale-105' : 'grayscale'
-                }`}
-              />
-            </div>
-          </Link>
-        </motion.div>
+          <span aria-hidden="true">←</span> volver
+        </Link>
 
-        {/* BLOQUE 3: ANTOLOGÍAS */}
-        <motion.div 
-          variants={itemVars}
-          className="relative flex flex-col justify-center items-center md:items-end group md:mt-16"
-          onMouseEnter={() => setHovered('antologias')}
-          onMouseLeave={() => setHovered(null)}
+        <AccordionSection
+          index="01"
+          label="libros"
+          isOpen={openSection === 'libros'}
+          onToggle={() => toggle('libros')}
         >
-          <Link to="/obra-escrita/antologias" className="relative w-full md:w-10/12 aspect-[3/4] block">
-            <h2 className="absolute -top-10 md:-top-12 right-0 md:-right-4 text-5xl md:text-6xl lg:text-7xl font-sans font-bold text-[#111] z-20 group-hover:italic transition-all duration-500 uppercase tracking-tighter">
-              Antologías
-            </h2>
-            <div className="w-full h-full overflow-hidden shadow-2xl bg-gray-200">
-              <img 
-                src="/antologias.png" 
-                alt="Antologías" 
-                className={`w-full h-full object-cover transition-all duration-700 ease-in-out transform ${
-                  hovered === 'antologias' ? 'grayscale-0 scale-105' : 'grayscale'
-                }`}
-              />
-            </div>
-          </Link>
-        </motion.div>
+          <div className={CARDS_GRID}>
+            {LIBROS.map((item) => (
+              <ObraCard key={item.id} {...item} />
+            ))}
+          </div>
+        </AccordionSection>
 
-      </motion.div>
+        <AccordionSection
+          index="02"
+          label="revistas"
+          isOpen={openSection === 'revistas'}
+          onToggle={() => toggle('revistas')}
+        >
+          <h4 className="text-xs md:text-sm font-sans tracking-[0.3em] uppercase text-black/40 mb-6">
+            Poesía
+          </h4>
+          <div className={`${CARDS_GRID} mb-16`}>
+            {POESIA.map((item) => (
+              <ObraCard key={item.id} {...item} />
+            ))}
+          </div>
+
+          <h4 className="text-xs md:text-sm font-sans tracking-[0.3em] uppercase text-black/40 mb-6">
+            Ensayo
+          </h4>
+          <div className={CARDS_GRID}>
+            {ENSAYO.map((item) => (
+              <ObraCard key={item.id} {...item} />
+            ))}
+          </div>
+        </AccordionSection>
+
+        <AccordionSection
+          index="03"
+          label="antologías"
+          isOpen={openSection === 'antologias'}
+          onToggle={() => toggle('antologias')}
+        >
+          <div className={CARDS_GRID}>
+            {ANTOLOGIAS.map((item) => (
+              <ObraCard key={item.id} {...item} />
+            ))}
+          </div>
+        </AccordionSection>
+
+      </div>
     </section>
   );
 };

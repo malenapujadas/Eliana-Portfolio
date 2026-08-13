@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const Peripecias = () => {
   // Este estado guarda una lista (array) con los números de las imágenes que ya revelamos

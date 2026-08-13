@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export const Profile = () => {
   return (
     <section 
-      className="relative w-full min-h-screen flex flex-col items-center justify-center p-8 md:p-24 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] bg-cover bg-center bg-no-repeat"
+      className="relative w-full flex flex-col items-center justify-center p-8 py-24 md:p-24 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/fondo-manteca.png')" }} 
     >
       
