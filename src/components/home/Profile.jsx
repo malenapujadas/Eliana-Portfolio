@@ -2,9 +2,8 @@ import { motion } from 'framer-motion';
 
 export const Profile = () => {
   return (
-    <section 
-      className="relative w-full flex flex-col items-center justify-center p-8 py-24 md:p-24 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }} 
+    <section
+      className="relative w-full flex flex-col items-center justify-center p-8 py-24 md:p-24"
     >
       
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 z-10">

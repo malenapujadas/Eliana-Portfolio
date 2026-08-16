@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
-    <footer 
-      className="relative w-full py-24 px-6 md:px-24 bg-cover bg-center bg-no-repeat z-10"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+    <footer
+      className="relative w-full py-24 px-6 md:px-24 z-10"
     >
       <div className="w-full max-w-6xl mx-auto flex flex-col">
         

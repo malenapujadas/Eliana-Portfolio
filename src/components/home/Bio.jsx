@@ -16,11 +16,10 @@ export const Bio = () => {
   };
 
   return (
-    <section 
-      id="impertinencia" 
+    <section
+      id="impertinencia"
       // px-6 y py-20 es para celular, md:p-24 es para escritorio
-      className="relative w-full flex items-center justify-center px-6 py-24 md:p-32 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      className="relative w-full flex items-center justify-center px-6 py-24 md:p-32"
     >
       <div className="w-full max-w-6xl flex flex-col md:flex-row justify-end z-10">
         

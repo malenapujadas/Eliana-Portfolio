@@ -56,8 +56,7 @@ export const Experiences = () => {
   return (
     <section
       id="obsesiones"
-      className="relative w-full flex items-center justify-center p-6 py-32 md:p-24 bg-cover bg-center bg-no-repeat overflow-hidden"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      className="relative w-full flex items-center justify-center p-6 py-32 md:p-24 overflow-hidden"
     >
       {/* IMÁGENES MOBILE: dispersas por la sección (z-0, siempre detrás del texto) */}
       <AnimatePresence>

@@ -33,7 +33,7 @@ export const Home = () => {
         <Hero />
       </div>
 
-      <div className="relative z-10 bg-transparent">
+      <div className="relative z-10 bg-[url('/fondo-eli-mb.png')] md:bg-[url('/fondo-eli-dk.png')] bg-cover bg-top bg-no-repeat">
         <Profile />
         <Bio />
         <Experiences />
