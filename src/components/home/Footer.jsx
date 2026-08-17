@@ -36,7 +36,7 @@ export const Footer = () => {
               target="_blank" 
               rel="noreferrer"
               title="Enviar WhatsApp"
-              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
+              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#5c2586] transition-all"
             >
               1125259843
             </a>
@@ -59,7 +59,7 @@ export const Footer = () => {
             <a 
               href="/cv-eliana.pdf" 
               download="Eliana_Tomassini_CV.pdf"
-              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
+              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#5c2586] transition-all"
             >
               descargar cv
             </a>

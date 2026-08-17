@@ -16,7 +16,7 @@ export const ObraCard = ({ img, topLabel, accentLabel, mainLabel, extraLabel, ba
         <img
           src={img}
           alt={mainLabel}
-          className="w-full h-full object-cover transition-all duration-700 md:group-hover:scale-105"
+          className="w-full h-full object-contain transition-all duration-700 md:group-hover:scale-105"
         />
       ) : (
         <div className="w-full h-full flex items-center justify-center border border-dashed border-black/15">

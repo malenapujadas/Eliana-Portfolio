@@ -9,7 +9,7 @@ import { AccordionSection, ObraCard, CARDS_GRID } from '../components/Accordion'
 const LIBROS = [
   {
     id: 'primera-distancia',
-    img: '/distancia-1.jpeg',
+    img: '/distancia-2.jpeg',
     topLabel: 'Enero editorial, 2026',
     mainLabel: 'Primera distancia',
     badge: 'Próximo lanzamiento',
