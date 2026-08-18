@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { Contact } from './pages/Contact';
 import { ObraEscrita } from './pages/ObraEscrita';
 import { VozAlta } from './pages/VozAlta';
+import { Resonancias } from './pages/Resonancias';
 import { Peripecias } from './pages/Peripecias';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Route path="/obra-escrita" element={<ObraEscrita />} />
 
             <Route path="/voz-alta" element={<VozAlta />} />
-            <Route path="/resonancias" element={<div className="min-h-screen"></div>} />
+            <Route path="/resonancias" element={<Resonancias />} />
             
             <Route path="/peripecias" element={<Peripecias />} />
             <Route path="/contacto" element={<Contact />} />

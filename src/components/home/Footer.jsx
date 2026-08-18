@@ -25,12 +25,12 @@ export const Footer = () => {
               href="mailto:elitomassini8@gmail.com" 
               className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
             >
-              elitomassini8@gmail.com
+              mail
             </a>
           </div>
 
           {/* Teléfono alineado a la derecha como en tu diseño */}
-          <div className="border-b border-black/30 pb-4 flex justify-end">
+          {/* <div className="border-b border-black/30 pb-4 flex justify-end">
             <a 
               href="https://wa.me/541125259843" 
               target="_blank" 
@@ -40,26 +40,26 @@ export const Footer = () => {
             >
               1125259843
             </a>
-          </div>
+          </div> */}
 
           {/* Instagram */}
-          <div className="border-b border-black/30 pb-4 flex justify-start">
+          <div className="border-b border-black/30 pb-4 flex justify-end">
             <a 
               href="https://instagram.com/manijasuelta" 
               target="_blank" 
               rel="noreferrer"
-              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
+              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#5c2586] transition-all"
             >
               @manijasuelta
             </a>
           </div>
 
           {/* Descargar CV */}
-          <div className="border-b border-black/30 pb-4 flex justify-end">
+          <div className="border-b border-black/30 pb-4 flex justify-start">
             <a 
               href="/cv-eliana.pdf" 
               download="Eliana_Tomassini_CV.pdf"
-              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#5c2586] transition-all"
+              className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#b895d3] transition-all"
             >
               descargar cv
             </a>

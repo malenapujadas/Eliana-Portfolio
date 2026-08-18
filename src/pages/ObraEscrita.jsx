@@ -75,6 +75,13 @@ const POESIA = [
     pais: 'Argentina',
     titulo: 'Poemas',
     link: 'https://flordeave.com.ar/poemas-de-eliana-tomassini/'
+  },
+  {
+    id: 'alborismos',
+    revista: 'Alborismos',
+    pais: 'Venezuela',
+    titulo: 'Poesía',
+    link: 'https://alborismos.wordpress.com/?s=eliana+tomassini'
   }
 ].map((item) => ({
   id: item.id,

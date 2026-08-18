@@ -10,7 +10,7 @@ export const Navbar = () => {
   const navigate = useNavigate(); // Herramienta para navegar entre páginas
 
   // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro
-  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/voz-alta') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
+  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/voz-alta') || location.pathname.includes('/resonancias') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
   useEffect(() => {
     const handleScroll = () => {
       // Si estamos en el home, esperamos a pasar el Hero. 
@@ -95,14 +95,14 @@ export const Navbar = () => {
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
           {/* Icono de mensaje */}
-          <a 
+          {/* <a 
             href="https://wa.me/541125259843" 
             target="_blank" 
             rel="noreferrer"
             title="Enviar WhatsApp"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-          </a>
+          </a> */}
         </div>
       </nav>
 

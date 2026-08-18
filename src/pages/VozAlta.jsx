@@ -7,7 +7,7 @@ const LECTURAS_IMAGES = [
   '/lecturas-2.jpg',
   '/lecturas-3.jpg',
   '/lecturas-4.jpg',
-  '/lecturas-5.jpeg'
+  '/lecturas-5.jpeg',
 ];
 
 const GESTION_CULTURAL = [
@@ -38,6 +38,7 @@ const MANIJA_SUELTA = {
   mainLabel: 'Manija suelta',
   topLabel: '2018 - 2019',
   extraLabel: 'Humor, arte y feminismos',
+  img: '/manija-suelta.png',
   link: 'https://www.instagram.com/manija_suelta/?hl=es',
   actionLabel: 'Ver instagram'
 };
