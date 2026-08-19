@@ -1,7 +1,7 @@
 # Sistema de Diseño (Design System)
 
 ## Paleta de Colores
-- **Fondo Base Universal:** Textura importada estáticamente `bg-[url('/fondo-manteca.png')]`. Color claro/cálido.
+- **Fondo Base Universal:** Textura importada estáticamente `url('/fondo-manteca.webp')`. Color claro/cálido.
 - **Texto Principal:** `#111` (Casi negro).
 - **Texto Secundario/Apagado:** `black/40` o `black/30` para elementos inactivos, barras separadoras, o migas de pan.
 - **Color de Acento (Hover/Activo):** `#b895d3` (Lila/Violeta suave).

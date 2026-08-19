@@ -8,9 +8,9 @@
 
 ## Estructura de Carpetas (Referencia)
 - `/src/pages/`: Componentes de nivel de ruta (ej. `Home.jsx`, `Contact.jsx`, `ObraEscrita.jsx`, `Peripecias.jsx`).
-- `/src/components/`: Componentes reutilizables o de layout (ej. `Navbar.jsx`, `Footer.jsx`, `ScrollToTop.jsx`, `SubMenuObra.jsx`).
+- `/src/components/`: Componentes reutilizables o de layout (ej. `Navbar.jsx`, `Accordion.jsx`, `ScrollToTop.jsx`).
 - `/src/components/home/`: Secciones específicas que arman la página principal (ej. `Hero.jsx`, `Bio.jsx`, `Experiences.jsx`).
-- `/public/`: Recursos estáticos, imágenes, texturas (ej. `fondo-manteca.png`) y PDFs (`cv-eliana.pdf`).
+- `/public/`: Recursos estáticos, imágenes, texturas (ej. `fondo-manteca.webp`) y PDFs (`cv-eliana.pdf`).
 
 ## Reglas de Arquitectura
 - Separación de responsabilidades: La lógica compleja se extrae si ensucia la vista (ej. Navbar maneja su propio estado de scroll).

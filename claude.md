@@ -16,7 +16,7 @@ Sistema de Diseño y Estética (UI):
 
 Vibra general: Estilo editorial moderno, minimalista, analógico y con toques asimétricos o "desordenados" intencionales (estilo collage).
 
-Fondo principal: Usamos una textura que llamamos "fondo manteca" (bg-[url('/fondo-manteca.png')]).
+Fondo principal: Usamos una textura que llamamos "fondo manteca" (url('/fondo-manteca.webp')).
 
 Tipografías: Mezclamos una tipografía sans-serif moderna y limpia (font-sans) para la interfaz/navegación, con una tipografía estilo máquina de escribir (font-cutive) para textos literarios, citas y detalles poéticos.
 
