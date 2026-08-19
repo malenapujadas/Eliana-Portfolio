@@ -7,7 +7,7 @@ export const Hero = () => {
       {/* CAPA 1: Fondo con Zoom en Mobile */}
       <div 
         className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-90 scale-[1.8] md:scale-100 origin-top transition-transform duration-1000"
-        style={{ backgroundImage: "url('/fondo.png')" }}
+        style={{ backgroundImage: "url('/fondo.webp')" }}
       ></div>
 
       {/* CAPA 2: Máquina de escribir */}

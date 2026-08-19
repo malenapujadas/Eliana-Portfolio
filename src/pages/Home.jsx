@@ -5,8 +5,10 @@ import { Profile } from '../components/home/Profile';
 import { Bio } from '../components/home/Bio';
 import { Experiences } from '../components/home/Experiences';
 import { Footer } from '../components/home/Footer';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export const Home = () => {
+  useDocumentTitle('Eliana Tomassini');
   const location = useLocation();
 
   // NUEVO: Este bloque revisa si venimos de otra página pidiendo ir a una sección específica

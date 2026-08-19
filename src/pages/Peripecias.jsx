@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export const Peripecias = () => {
+  useDocumentTitle('Peripecias — Eliana Tomassini');
+
   // Este estado guarda una lista (array) con los números de las imágenes que ya revelamos
   const [revealed, setRevealed] = useState([]);
 
@@ -16,32 +19,32 @@ export const Peripecias = () => {
   // BASE DE DATOS DEL COLLAGE
   // Mezclamos imágenes y textos, dándoles distintos tamaños (span)
   const collageItems = [
-    { type: 'img', src: '/peripecia-0.png', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-1.png', span: 'col-span-1 md:row-span-1' },
-    { type: 'img', src: '/peripecia-2.png', span: 'col-span-1 md:row-span-2' },
+    { type: 'img', src: '/peripecia-0.jpg', span: 'col-span-1 md:row-span-2' },
+    { type: 'img', src: '/peripecia-1.jpg', span: 'col-span-1 md:row-span-1' },
+    { type: 'img', src: '/peripecia-2.jpg', span: 'col-span-1 md:row-span-2' },
     { type: 'text', content: 'Un popurrí\nque me hace sentir viva', span: 'col-span-1 md:row-span-1', extraClasses: 'text-2xl md:text-3xl font-cutive italic whitespace-pre-line flex items-center' },
-    { type: 'img', src: '/peripecia-3.png', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-4.png', span: 'col-span-1 md:row-span-1' },
+    { type: 'img', src: '/peripecia-3.jpg', span: 'col-span-1 md:row-span-2' },
+    { type: 'img', src: '/peripecia-4.jpg', span: 'col-span-1 md:row-span-1' },
     { type: 'text', content: '| tostada con queso', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
-    { type: 'img', src: '/peripecia-5.png', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-6.png', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
+    { type: 'img', src: '/peripecia-5.jpg', span: 'col-span-1 md:row-span-2' },
+    { type: 'img', src: '/peripecia-6.jpg', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
     { type: 'text', content: '| desorden', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-end justify-end' },
-    { type: 'img', src: '/peripecia-7.png', span: 'col-span-1 md:row-span-2' },
+    { type: 'img', src: '/peripecia-7.jpg', span: 'col-span-1 md:row-span-2' },
     { type: 'text', content: '| atardeceres', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
-    { type: 'img', src: '/peripecia-8.png', span: 'col-span-1 md:row-span-1' },
+    { type: 'img', src: '/peripecia-8.jpg', span: 'col-span-1 md:row-span-1' },
   ];
 
   return (
     <section 
       id="peripecias" 
       className="relative w-full min-h-screen py-32 px-6 md:px-12 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      style={{ backgroundImage: "url('/fondo-manteca.webp')" }}
     >
       <div className="w-full max-w-7xl mx-auto">
         
         {/* Título oculto para accesibilidad, pero podemos dejar un pequeño texto guía */}
         <p className="text-center font-sans text-black/30 tracking-widest text-sm mb-12 uppercase animate-pulse">
-          Explorá con el cursor
+          Explorá la grilla
         </p>
 
         {/* GRILLA DEL COLLAGE */}
@@ -53,12 +56,14 @@ export const Peripecias = () => {
             const isRevealed = revealed.includes(index);
 
             return (
-              <div 
+              <div
                 key={index}
-                // Eventos para revelar (mouse en compu, tocar en celular)
+                // Eventos para revelar (mouse en compu, tocar en celular, foco de teclado)
                 onMouseEnter={() => handleReveal(index)}
                 onTouchStart={() => handleReveal(index)}
-                className={`relative w-full h-full ${item.span}`}
+                onFocus={() => handleReveal(index)}
+                tabIndex={0}
+                className={`relative w-full h-full ${item.span} focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b895d3] rounded-sm`}
               >
                 {/* ACÁ ESTÁ LA MAGIA DE LA OPACIDAD:
                   Si isRevealed es true, opacity-100. Si no, opacity-0.

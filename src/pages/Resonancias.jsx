@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ObraCard, CARDS_GRID } from '../components/Accordion';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const RESONANCIAS = [
   {
@@ -28,10 +29,12 @@ const RESONANCIAS = [
 ];
 
 export const Resonancias = () => {
+  useDocumentTitle('Resonancias — Eliana Tomassini');
+
   return (
     <section
       className="relative w-full min-h-screen pt-32 md:pt-40 pb-24 px-6 md:px-12 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      style={{ backgroundImage: "url('/fondo-manteca.webp')" }}
     >
       <div className="w-full max-w-6xl mx-auto">
 

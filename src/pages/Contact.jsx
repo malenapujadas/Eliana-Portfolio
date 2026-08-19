@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const Contact = () => {
+  useDocumentTitle('Contacto — Eliana Tomassini');
+
   const [formData, setFormData] = useState({
     name: '',
     reason: '',
@@ -9,6 +17,8 @@ export const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -19,18 +29,31 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos listos para enviar:', formData);
-    setIsSubmitted(true);
+    setIsSending(true);
+    setHasError(false);
+
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData, { publicKey: EMAILJS_PUBLIC_KEY })
+      .then(() => {
+        setIsSubmitted(true);
+      })
+      .catch((err) => {
+        console.error('Error al enviar el mensaje:', err);
+        setHasError(true);
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
   };
 
   return (
-    <section 
+    <section
       // Agregamos overflow-x-hidden para garantizar que nada ensanche la pantalla
       className="relative w-full min-h-screen flex items-center justify-center px-6 py-32 md:p-24 bg-cover bg-center bg-no-repeat overflow-x-hidden"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      style={{ backgroundImage: "url('/fondo-manteca.webp')" }}
     >
       <div className="w-full max-w-4xl relative z-10">
-        
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,30 +102,41 @@ export const Contact = () => {
                 .
               </p>
 
-              <div className="mt-16 flex flex-col md:flex-row items-center justify-end gap-8">
-                
+              {hasError && (
+                <p className="mt-8 font-sans text-sm md:text-base text-red-700">
+                  Uy, no se pudo enviar el mensaje. Probá de nuevo o escribime directo a{' '}
+                  <a href="mailto:elitomassini8@gmail.com" className="underline">
+                    elitomassini8@gmail.com
+                  </a>
+                  .
+                </p>
+              )}
 
-                <button 
+              <div className="mt-16 flex flex-col md:flex-row items-center justify-end gap-8">
+
+
+                <button
                   type="submit"
-                  className="font-sans text-xl md:text-3xl border border-black rounded-full px-8 md:px-12 py-3 md:py-4 hover:bg-[#b895d3] hover:text-white hover:border-[#b895d3] transition-all duration-300"
+                  disabled={isSending}
+                  className="font-sans text-xl md:text-3xl border border-black rounded-full px-8 md:px-12 py-3 md:py-4 hover:bg-[#b895d3] hover:text-white hover:border-[#b895d3] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Enviar mensaje
+                  {isSending ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
 
-                <a 
-                  href="/cv-eliana.pdf" 
+                <a
+                  href="/cv-eliana.pdf"
                   download="Eliana_Tomassini_CV.pdf"
                   className="font-sans text-lg md:text-xl text-black/50 hover:text-[#b895d3] hover:italic transition-all duration-300 underline underline-offset-4"
                 >
                   o descargar cv
                 </a>
-                
+
               </div>
             </form>
           ) : (
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               className="text-4xl md:text-6xl font-cutive italic text-[#1a3b2b]"
             >
               qué catástrofe hermosa que me hayas escrito. <br/> te respondo pronto.

@@ -9,8 +9,10 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate(); // Herramienta para navegar entre páginas
 
-  // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro
-  const isLightPage = location.pathname.includes('/obra-escrita') || location.pathname.includes('/voz-alta') || location.pathname.includes('/resonancias') || location.pathname.includes('/contacto') || location.pathname.includes('/peripecias');
+  // Detectamos si estamos en una página que SIEMPRE debe tener el texto oscuro.
+  // Solo el Home tiene el Hero oscuro de fondo; cualquier otra página (incluida
+  // la 404) usa fondo claro, así que no hace falta ir sumando cada ruta nueva acá.
+  const isLightPage = location.pathname !== '/';
   useEffect(() => {
     const handleScroll = () => {
       // Si estamos en el home, esperamos a pasar el Hero. 
@@ -50,6 +52,10 @@ export const Navbar = () => {
 
   // Esta variable decide el color final evaluando el scroll y en qué página estamos
   const shouldBeDarkText = (isScrolled || isLightPage) && !isMenuOpen;
+  // Se lo pasamos explícito a cada link (no alcanza con heredarlo del <nav>: un
+  // <button> y un <a> heredan un color animado con timings distintos entre sí,
+  // así que dos links con las mismas clases pueden quedar visualmente desincronizados).
+  const navTextColor = shouldBeDarkText ? 'text-black/80' : 'text-white/80';
 
   return (
     <>
@@ -63,10 +69,10 @@ export const Navbar = () => {
         {/* LINKS DESKTOP */}
         <div className="hidden md:flex gap-8 text-sm tracking-widest lowercase">
           {/* Cambiamos las etiquetas <a> por <button> que llaman a nuestra función */}
-          <button onClick={(e) => handleNavClick(e, 'inicio')} className="hover:text-[#b895d3] transition-colors duration-300">inicio</button>
-          <button onClick={(e) => handleNavClick(e, 'obsesiones')} className="hover:text-[#b895d3] transition-colors duration-300">obsesiones</button>
-          <Link to="/peripecias" className="hover:text-[#b895d3] transition-colors duration-300">peripecias</Link>
-          <Link to="/contacto" className="hover:text-[#b895d3] transition-colors duration-300">contacto</Link>
+          <button onClick={(e) => handleNavClick(e, 'inicio')} className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}>inicio</button>
+          <button onClick={(e) => handleNavClick(e, 'obsesiones')} className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}>obsesiones</button>
+          <Link to="/peripecias" className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}>peripecias</Link>
+          <Link to="/contacto" className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}>contacto</Link>
         </div>
 
         {/* BOTÓN MOBILE (Menú) */}
@@ -83,16 +89,16 @@ export const Navbar = () => {
         <div className="flex gap-4 md:gap-5 items-center">
           {/* Icono de Email */}
           <a href="mailto:elitomassini8@gmail.com" title="Enviar correo">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
 
           {/* Icono de Descargar CV */}
           <a href="/cv-eliana.pdf" download="Eliana_Tomassini_CV.pdf" title="Descargar CV">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           </a>
           {/* Icono de IG */}
           <a href="https://instagram.com/manijasuelta"  target="_blank" rel="noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:text-[#b895d3] transition-colors duration-300"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${navTextColor} hover:text-[#b895d3] transition-colors duration-500`}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
           </a>
           {/* Icono de mensaje */}
           {/* <a 

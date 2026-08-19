@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AccordionSection, ObraCard, CARDS_GRID } from '../components/Accordion';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 // === DATOS ===
 // Misma información que antes vivía en Libros.jsx / Revistas.jsx / Antologias.jsx,
@@ -80,7 +81,7 @@ const POESIA = [
     id: 'alborismos',
     revista: 'Alborismos',
     pais: 'Venezuela',
-    titulo: 'Poesía',
+    titulo: 'Alborismos',
     link: 'https://alborismos.wordpress.com/?s=eliana+tomassini'
   }
 ].map((item) => ({
@@ -174,6 +175,8 @@ const ANTOLOGIAS = [
 }));
 
 export const ObraEscrita = () => {
+  useDocumentTitle('Obra escrita — Eliana Tomassini');
+
   // Arranca con "antologías" abierta: así se ven de entrada las 3 cabeceras superpuestas
   const [openSection, setOpenSection] = useState('antologias');
 
@@ -182,7 +185,7 @@ export const ObraEscrita = () => {
   return (
     <section
       className="relative w-full min-h-screen pt-32 md:pt-40 pb-24 px-6 md:px-12 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      style={{ backgroundImage: "url('/fondo-manteca.webp')" }}
     >
       <div className="w-full max-w-6xl mx-auto">
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AccordionSection, ObraCard, CARDS_GRID, SectionSubtitle } from '../components/Accordion';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const LECTURAS_IMAGES = [
   '/lecturas-1.jpg',
@@ -44,6 +45,8 @@ const MANIJA_SUELTA = {
 };
 
 export const VozAlta = () => {
+  useDocumentTitle('Voz alta — Eliana Tomassini');
+
   // Arranca con "manija suelta" abierta
   const [openSection, setOpenSection] = useState('manija');
 
@@ -52,7 +55,7 @@ export const VozAlta = () => {
   return (
     <section
       className="relative w-full min-h-screen pt-32 md:pt-40 pb-24 px-6 md:px-12 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/fondo-manteca.png')" }}
+      style={{ backgroundImage: "url('/fondo-manteca.webp')" }}
     >
       <div className="w-full max-w-6xl mx-auto">
 

@@ -7,6 +7,7 @@ import { ObraEscrita } from './pages/ObraEscrita';
 import { VozAlta } from './pages/VozAlta';
 import { Resonancias } from './pages/Resonancias';
 import { Peripecias } from './pages/Peripecias';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             
             <Route path="/peripecias" element={<Peripecias />} />
             <Route path="/contacto" element={<Contact />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </div>
