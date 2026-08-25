@@ -22,7 +22,6 @@ export const Peripecias = () => {
     { type: 'img', src: '/peripecia-0.jpg', span: 'col-span-1 md:row-span-2' },
     { type: 'img', src: '/peripecia-1.jpg', span: 'col-span-1 md:row-span-1' },
     { type: 'img', src: '/peripecia-2.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'text', content: 'Un popurrí\nque me hace sentir viva', span: 'col-span-1 md:row-span-1', extraClasses: 'text-2xl md:text-3xl font-cutive italic whitespace-pre-line flex items-center' },
     { type: 'img', src: '/peripecia-3.jpg', span: 'col-span-1 md:row-span-2' },
     { type: 'img', src: '/peripecia-4.jpg', span: 'col-span-1 md:row-span-1' },
     { type: 'text', content: '| tostada con queso', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
@@ -32,6 +31,7 @@ export const Peripecias = () => {
     { type: 'img', src: '/peripecia-7.jpg', span: 'col-span-1 md:row-span-2' },
     { type: 'text', content: '| atardeceres', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
     { type: 'img', src: '/peripecia-8.jpg', span: 'col-span-1 md:row-span-1' },
+    { type: 'img', src: '/peripecia-9.jpg', span: 'col-span-1 md:row-span-1' },
   ];
 
   return (

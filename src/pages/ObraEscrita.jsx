@@ -83,6 +83,13 @@ const POESIA = [
     pais: 'Venezuela',
     titulo: 'Alborismos',
     link: 'https://alborismos.wordpress.com/?s=eliana+tomassini'
+  },
+  {
+    id: 'piccioletta',
+    revista: 'La Piccioletta Barca',
+    pais: 'Reino Unido',
+    titulo: 'Subrayado nocturno',
+    link: 'https://www.picciolettabarca.com/posts/subrayado-nocturno'
   }
 ].map((item) => ({
   id: item.id,

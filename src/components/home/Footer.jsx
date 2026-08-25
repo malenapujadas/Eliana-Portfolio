@@ -44,13 +44,13 @@ export const Footer = () => {
 
           {/* Instagram */}
           <div className="border-b border-black/30 pb-4 flex justify-end">
-            <a 
-              href="https://instagram.com/manijasuelta" 
-              target="_blank" 
+            <a
+              href="https://www.instagram.com/eliana.tomassini/?hl=es"
+              target="_blank"
               rel="noreferrer"
               className="text-lg md:text-2xl font-sans text-black hover:italic hover:text-[#5c2586] transition-all"
             >
-              @manijasuelta
+              @eliana.tomassini
             </a>
           </div>
 
