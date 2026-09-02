@@ -5,13 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 // img/link son opcionales: sin img se muestra un placeholder "próximamente";
 // sin link no se muestra botón de acción.
 export const ObraCard = ({ img, topLabel, accentLabel, mainLabel, extraLabel, badge, link, actionLabel }) => (
-  <div className="group flex flex-row md:flex-col gap-4 md:gap-3">
+  <div className="group relative flex flex-row md:flex-col gap-4 md:gap-3">
     <div className="relative w-28 h-20 md:w-full md:h-auto md:aspect-4/3 shrink-0 overflow-hidden bg-black/5">
-      {badge && (
-        <span className="absolute top-1.5 left-1.5 md:top-2 md:left-2 z-10 bg-[#b895d3] text-white text-[9px] md:text-[10px] font-sans tracking-widest uppercase px-2.5 md:px-3 py-0.5 md:py-1 rounded-full">
-          {badge}
-        </span>
-      )}
       {img ? (
         <img
           src={img}
@@ -28,6 +23,15 @@ export const ObraCard = ({ img, topLabel, accentLabel, mainLabel, extraLabel, ba
     </div>
 
     <div className="flex flex-col gap-0.5 md:gap-1 min-w-0">
+      {/* En mobile la miniatura mide 112px de ancho: un chip encima la tapaba
+          entera, así que acá va arriba del texto, donde hay lugar. En desktop la
+          imagen ocupa todo el ancho de la tarjeta, así que vuelve a superponerse
+          en la esquina (absolute respecto de la tarjeta, que ahora es relative). */}
+      {badge && (
+        <span className="w-max mb-1 md:mb-0 md:absolute md:top-2 md:left-2 md:z-10 bg-[#b895d3] text-white text-[8px] md:text-[10px] font-sans tracking-widest uppercase px-2 md:px-3 py-0.5 md:py-1 rounded-full">
+          {badge}
+        </span>
+      )}
       {topLabel && (
         <span className="text-[10px] md:text-[11px] font-sans tracking-widest uppercase text-black/40 truncate">
           {topLabel}

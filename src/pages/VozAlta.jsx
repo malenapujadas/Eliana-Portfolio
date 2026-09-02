@@ -9,6 +9,10 @@ const LECTURAS_IMAGES = [
   '/lecturas-3.jpg',
   '/lecturas-4.jpg',
   '/lecturas-5.jpeg',
+  '/lecturas-6.jpg',
+  '/lecturas-7.jpeg',
+  '/lecturas-8.jpg',
+  '/lecturas-9.jpg',
 ];
 
 // Los cuatro ciclos, sin imágenes: sólo dos tienen instagram, así que en vez de
@@ -143,6 +147,8 @@ export const VozAlta = () => {
         >
           <span aria-hidden="true">←</span> volver
         </Link>
+
+        <h1 className="sr-only">Voz alta — lecturas, gestión cultural y radio de Eliana Tomassini</h1>
 
         <AccordionSection
           index="01"

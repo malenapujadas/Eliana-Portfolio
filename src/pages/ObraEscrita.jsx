@@ -13,7 +13,7 @@ const LIBROS = [
     img: '/distancia-2.jpeg',
     topLabel: 'Enero editorial, 2026',
     mainLabel: 'Primera distancia',
-    badge: 'Próximo lanzamiento',
+    badge: 'Último lanzamiento',
     link: 'https://www.eneroeditorial.com/libro.php?id=88',
     actionLabel: 'Ver en editorial'
   },
@@ -202,6 +202,8 @@ export const ObraEscrita = () => {
         >
           <span aria-hidden="true">←</span> volver
         </Link>
+
+        <h1 className="sr-only">Obra escrita de Eliana Tomassini — libros, antologías y revistas</h1>
 
         <AccordionSection
           index="01"

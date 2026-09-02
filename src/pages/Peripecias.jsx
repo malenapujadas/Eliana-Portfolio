@@ -17,21 +17,18 @@ export const Peripecias = () => {
   };
 
   // BASE DE DATOS DEL COLLAGE
-  // Mezclamos imágenes y textos, dándoles distintos tamaños (span)
+  // Solo imágenes, con distintos tamaños (span) para armar el ritmo del collage
   const collageItems = [
-    { type: 'img', src: '/peripecia-0.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-1.jpg', span: 'col-span-1 md:row-span-1' },
-    { type: 'img', src: '/peripecia-2.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-3.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-4.jpg', span: 'col-span-1 md:row-span-1' },
-    { type: 'text', content: '| tostada con queso', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
-    { type: 'img', src: '/peripecia-5.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'img', src: '/peripecia-6.jpg', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
-    { type: 'text', content: '| desorden', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-end justify-end' },
-    { type: 'img', src: '/peripecia-7.jpg', span: 'col-span-1 md:row-span-2' },
-    { type: 'text', content: '| atardeceres', span: 'col-span-1 md:row-span-1', extraClasses: 'text-sm font-cutive text-black/50 flex items-start' },
-    { type: 'img', src: '/peripecia-8.jpg', span: 'col-span-1 md:row-span-1' },
-    { type: 'img', src: '/peripecia-9.jpg', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-0.jpg', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-1.jpg', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-2.jpg', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-3.jpg', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-4.jpg', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-5.jpg', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-6.jpg', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
+    { src: '/peripecia-7.jpg', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-8.jpg', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-9.jpg', span: 'col-span-1 md:row-span-1' },
   ];
 
   return (
@@ -42,6 +39,8 @@ export const Peripecias = () => {
     >
       <div className="w-full max-w-7xl mx-auto">
         
+        <h1 className="sr-only">Peripecias — cuaderno visual de Eliana Tomassini</h1>
+
         {/* Título oculto para accesibilidad, pero podemos dejar un pequeño texto guía */}
         <p className="text-center font-sans text-black/30 tracking-widest text-sm mb-12 uppercase animate-pulse">
           Explorá la grilla
@@ -74,17 +73,11 @@ export const Peripecias = () => {
                     isRevealed ? 'opacity-100' : 'opacity-0'
                   }`}
                 >
-                  {item.type === 'img' ? (
-                    <img 
-                      src={item.src} 
-                      alt={`Peripecia ${index}`} 
-                      className="w-full h-full object-cover shadow-lg rounded-sm"
-                    />
-                  ) : (
-                    <div className={`w-full h-full ${item.extraClasses}`}>
-                      {item.content}
-                    </div>
-                  )}
+                  <img 
+                    src={item.src} 
+                    alt={`Peripecia ${index}`} 
+                    className="w-full h-full object-cover shadow-lg rounded-sm"
+                  />
                 </div>
               </div>
             );

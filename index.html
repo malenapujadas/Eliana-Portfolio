@@ -7,7 +7,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cutive&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Eliana Tomassini, escritora y artista. Obra escrita, voz alta y resonancias: un espacio íntimo para explorar su universo creativo." />
+    <meta name="description" content="Eliana Tomassini, artista. Obra escrita, voz alta y resonancias: un espacio íntimo para explorar su universo creativo." />
+    <meta name="author" content="Eliana Tomassini" />
+
+    <!-- Open Graph: lo que se ve al pegar el link en WhatsApp, Instagram, Facebook.
+         Ojo: NO ponemos og:url ni canonical. Al ser una SPA, todas las rutas sirven
+         este mismo index.html, así que una URL fija acá le diría a Google y a los
+         scrapers que /voz-alta, /contacto, etc. son todas la home. Sin og:url, cada
+         scraper usa la URL que realmente pidió, que es lo correcto. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eliana Tomassini" />
+    <meta property="og:title" content="Eliana Tomassini" />
+    <meta property="og:description" content="Eliana Tomassini, artista. Obra escrita, voz alta y resonancias: un espacio íntimo para explorar su universo creativo." />
+    <meta property="og:image" content="https://www.elianatomassini.com.ar/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Cartel que dice: en este sitio se produce ficción" />
+    <meta property="og:locale" content="es_AR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eliana Tomassini" />
+    <meta name="twitter:description" content="Eliana Tomassini, artista. Obra escrita, voz alta y resonancias: un espacio íntimo para explorar su universo creativo." />
+    <meta name="twitter:image" content="https://www.elianatomassini.com.ar/og-image.jpg" />
+
     <title>Eliana Tomassini</title>
   </head>
   <body>

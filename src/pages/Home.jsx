@@ -30,12 +30,15 @@ export const Home = () => {
   }, [location]);
 
   return (
-    <div className="w-full relative">
-      <div className="sticky top-0 h-screen w-full z-0">
-        <Hero />
-      </div>
+    /* Un solo fondo para todo el home: la imagen cubre el contenedor entero
+       (hero + contenido), asi no hay corte visible entre secciones. El color de
+       base es el del borde inferior de la imagen, por si la pagina crece mas. */
+    <div className="w-full relative bg-[#f7f2f1] bg-[url('/fondo-nuevo-mb.webp')] md:bg-[url('/fondo-nuevo.webp')] bg-cover bg-top bg-no-repeat">
+      <h1 className="sr-only">Eliana Tomassini — escritora y artista</h1>
 
-      <div className="relative z-10 bg-[url('/fondo-eli-mb.png')] md:bg-[url('/fondo-eli-dk.png')] bg-cover bg-top bg-no-repeat">
+      <Hero />
+
+      <div className="relative z-10">
         <Profile />
         <Bio />
         <Experiences />

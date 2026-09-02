@@ -5,6 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 const RESONANCIAS = [
   {
     id: 'can-serrat-residente',
+    img: '/can-serrat-0.webp',
     topLabel: 'Can Serrat · España',
     accentLabel: '2023',
     mainLabel: 'Residencia Internacional de Arte — Residente',
@@ -13,6 +14,7 @@ const RESONANCIAS = [
   },
   {
     id: 'can-serrat-jurada',
+    img: '/can-serrat-1.webp',
     topLabel: 'Can Serrat · España',
     accentLabel: '2024',
     mainLabel: 'Residencia Internacional de Arte — Jurada de la residencia',
@@ -21,6 +23,7 @@ const RESONANCIAS = [
   },
   {
     id: 'fuente-vaqueros',
+    img: '/can-serrat-2.webp',
     topLabel: 'Fuente Vaqueros, España',
     accentLabel: '2023',
     mainLabel: 'Finalista Premio Internacional de Poesía de Fuente Vaqueros',
@@ -47,9 +50,9 @@ export const Resonancias = () => {
 
         {/* Título estático: misma tipografía que los encabezados de acordeón, sin botón ni flecha porque acá no hay nada para desplegar */}
         <div className="pb-10 md:pb-16 mb-10 md:mb-16 border-b border-black/10">
-          <span className="block ml-2 sm:ml-[14%] md:ml-[24%] font-sans font-bold uppercase tracking-tighter leading-tight text-4xl sm:text-6xl md:text-8xl lg:text-7xl text-black">
+          <h1 className="block ml-2 sm:ml-[14%] md:ml-[24%] font-sans font-bold uppercase tracking-tighter leading-tight text-4xl sm:text-6xl md:text-8xl lg:text-7xl text-black">
             resonancias
-          </span>
+          </h1>
         </div>
 
         <div className={CARDS_GRID}>

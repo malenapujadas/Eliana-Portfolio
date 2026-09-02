@@ -59,9 +59,9 @@ export const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-sm md:text-base font-sans tracking-widest text-black/50 uppercase mb-12">
+          <h1 className="text-sm md:text-base font-sans tracking-widest text-black/50 uppercase mb-12">
             Iniciar conversación
-          </h2>
+          </h1>
 
           {!isSubmitted ? (
             <form onSubmit={handleSubmit} className="w-full">
