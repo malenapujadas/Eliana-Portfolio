@@ -1,8 +1,17 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export const Peripecias = () => {
   useDocumentTitle('Peripecias — Eliana Tomassini');
+
+  // Dónde estamos parados decide CÓMO se revela el collage:
+  // - Con mouse (desktop): se revela al pasar por encima. Esa es la gracia de la
+  //   página, la exploración deliberada.
+  // - Sin mouse (celular/tablet): el hover no existe, y obligar a tocar diez
+  //   imágenes una por una es incómodo. Ahí se revelan solas al entrar en pantalla.
+  const hayHover = useMediaQuery('(hover: hover) and (min-width: 768px)');
 
   // Este estado guarda una lista (array) con los números de las imágenes que ya revelamos
   const [revealed, setRevealed] = useState([]);
@@ -51,34 +60,43 @@ export const Peripecias = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 auto-rows-[150px] md:auto-rows-[250px]">
           
           {collageItems.map((item, index) => {
-            // Verificamos si este ítem ya fue tocado por el mouse
-            const isRevealed = revealed.includes(index);
+            // Con hover, la opacidad la manda el estado (se prende al pasar el mouse).
+            // Sin hover, la maneja whileInView: framer-motion la anima cuando la
+            // celda entra en pantalla. once:true la deja revelada para siempre;
+            // amount:0.3 espera a que se vea un 30% para no dispararla de refilón.
+            const revelado = hayHover
+              ? { animate: { opacity: revealed.includes(index) ? 1 : 0 } }
+              : { whileInView: { opacity: 1 }, viewport: { once: true, amount: 0.3 } };
+
+            // El foco de teclado y el hover solo tienen sentido donde hay mouse.
+            // En celular la grilla no es interactiva, así que tampoco suma diez
+            // paradas de tabulación que no hacen nada.
+            const interaccion = hayHover
+              ? {
+                  onMouseEnter: () => handleReveal(index),
+                  onFocus: () => handleReveal(index),
+                  tabIndex: 0
+                }
+              : {};
 
             return (
               <div
                 key={index}
-                // Eventos para revelar (mouse en compu, tocar en celular, foco de teclado)
-                onMouseEnter={() => handleReveal(index)}
-                onTouchStart={() => handleReveal(index)}
-                onFocus={() => handleReveal(index)}
-                tabIndex={0}
+                {...interaccion}
                 className={`relative w-full h-full ${item.span} focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b895d3] rounded-sm`}
               >
-                {/* ACÁ ESTÁ LA MAGIA DE LA OPACIDAD:
-                  Si isRevealed es true, opacity-100. Si no, opacity-0.
-                  La transición dura 1 segundo (duration-1000) para que sea súper suave.
-                */}
-                <div 
-                  className={`w-full h-full transition-opacity duration-1000 ease-in-out ${
-                    isRevealed ? 'opacity-100' : 'opacity-0'
-                  }`}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  {...revelado}
+                  transition={{ duration: 1, ease: 'easeInOut' }}
+                  className="w-full h-full"
                 >
                   <img 
                     src={item.src} 
                     alt={`Peripecia ${index}`} 
                     className="w-full h-full object-cover shadow-lg rounded-sm"
                   />
-                </div>
+                </motion.div>
               </div>
             );
           })}
