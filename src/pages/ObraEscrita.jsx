@@ -29,6 +29,13 @@ const LIBROS = [
 
 const POESIA = [
   {
+    id: 'circulo-mexico',
+    revista: 'Círculo de Poesía',
+    pais: 'México',
+    titulo: 'Poesía argentina',
+    link: 'https://circulodepoesia.com/2026/09/poesia-argentina-eliana-tomassini/'
+  },
+  {
     id: 'santa-rabia',
     revista: 'Santa Rabia Poetry',
     pais: 'Perú',
