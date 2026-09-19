@@ -10,7 +10,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 const LIBROS = [
   {
     id: 'primera-distancia',
-    img: '/distancia-2.jpeg',
+    img: '/distancia-2.webp',
     topLabel: 'Enero editorial, 2026',
     mainLabel: 'Primera distancia',
     badge: 'Último lanzamiento',
@@ -19,7 +19,7 @@ const LIBROS = [
   },
   {
     id: 'intimidad',
-    img: '/intimidad-1.jpg',
+    img: '/intimidad-1.webp',
     topLabel: 'Alción editora, 2019',
     mainLabel: 'Algún recuerdo de Intimidad',
     link: 'https://alcioneditora.com.ar/productos/algun-recuerdo-de-intimidad/',
@@ -100,7 +100,7 @@ const POESIA = [
   }
 ].map((item) => ({
   id: item.id,
-  img: `/${item.id}.png`,
+  img: `/${item.id}.webp`,
   topLabel: item.revista,
   accentLabel: item.pais,
   mainLabel: item.titulo,
@@ -135,7 +135,7 @@ const ENSAYO = [
   } */
 ].map((item) => ({
   id: item.id,
-  img: `/${item.id}.png`,
+  img: `/${item.id}.webp`,
   topLabel: item.revista,
   mainLabel: item.titulo,
   link: item.link,
@@ -180,7 +180,7 @@ const ANTOLOGIAS = [
   }
 ].map((item) => ({
   id: item.id,
-  img: `/${item.id}.png`,
+  img: `/${item.id}.webp`,
   topLabel: item.editorial,
   accentLabel: item.titulo,
   mainLabel: item.homenaje,

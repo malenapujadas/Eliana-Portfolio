@@ -8,7 +8,7 @@ const OBSESIONES = [
     id: 'obra',
     title: 'obra escrita',
     path: '/obra-escrita',
-    img: '/hover-obra.jpg',
+    img: '/hover-obra.webp',
     // Se corre hacia la izquierda del centro
     wrapperClasses: 'md:mr-32 lg:mr-48',
     // Desktop: flota al costado de la propia palabra
@@ -20,7 +20,7 @@ const OBSESIONES = [
     id: 'voz',
     title: 'voz alta',
     path: '/voz-alta',
-    img: '/hover-voz.jpg',
+    img: '/hover-voz.webp',
     // Se corre hacia la derecha del centro
     wrapperClasses: 'md:ml-20 lg:ml-32',
     imgClasses: 'hidden md:block md:w-64 md:h-auto md:object-contain md:top-24 md:left-[90%]',
@@ -30,7 +30,7 @@ const OBSESIONES = [
     id: 'resonancias',
     title: 'resonancias',
     path: '/resonancias',
-    img: '/hover-resonancias.jpg',
+    img: '/hover-resonancias.webp',
     // Se corre un poco hacia la izquierda, menos que "obra escrita"
     wrapperClasses: 'md:mr-12 lg:mr-16',
     imgClasses: 'hidden md:block md:w-96 md:h-auto md:object-contain md:top-1/2 md:left-[100%] md:-translate-y-1/2',

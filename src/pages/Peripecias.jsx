@@ -28,16 +28,16 @@ export const Peripecias = () => {
   // BASE DE DATOS DEL COLLAGE
   // Solo imágenes, con distintos tamaños (span) para armar el ritmo del collage
   const collageItems = [
-    { src: '/peripecia-0.jpg', span: 'col-span-1 md:row-span-2' },
-    { src: '/peripecia-1.jpg', span: 'col-span-1 md:row-span-1' },
-    { src: '/peripecia-2.jpg', span: 'col-span-1 md:row-span-2' },
-    { src: '/peripecia-3.jpg', span: 'col-span-1 md:row-span-2' },
-    { src: '/peripecia-4.jpg', span: 'col-span-1 md:row-span-1' },
-    { src: '/peripecia-5.jpg', span: 'col-span-1 md:row-span-2' },
-    { src: '/peripecia-6.jpg', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
-    { src: '/peripecia-7.jpg', span: 'col-span-1 md:row-span-2' },
-    { src: '/peripecia-8.jpg', span: 'col-span-1 md:row-span-1' },
-    { src: '/peripecia-9.jpg', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-0.webp', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-1.webp', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-2.webp', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-3.webp', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-4.webp', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-5.webp', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-6.webp', span: 'col-span-2 md:row-span-2' }, // Esta es más ancha (mesa de trabajo)
+    { src: '/peripecia-7.webp', span: 'col-span-1 md:row-span-2' },
+    { src: '/peripecia-8.webp', span: 'col-span-1 md:row-span-1' },
+    { src: '/peripecia-9.webp', span: 'col-span-1 md:row-span-1' },
   ];
 
   return (

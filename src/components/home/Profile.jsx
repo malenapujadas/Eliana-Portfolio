@@ -14,7 +14,7 @@ export const Profile = () => {
         {/* Columna Derecha (Foto y Nombre) */}
         <div className="flex flex-col items-end text-right">
           <img
-            src="/eliana.jpg"
+            src="/eliana.webp"
             alt="Eliana Tomassini"
             className="w-full max-w-[450px] object-cover mb-6 grayscale hover:grayscale-0 transition-all duration-700"
           />

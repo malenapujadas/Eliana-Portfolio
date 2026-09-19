@@ -4,15 +4,15 @@ import { AccordionSection, ObraCard, CARDS_GRID, SectionSubtitle } from '../comp
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const LECTURAS_IMAGES = [
-  '/lecturas-1.jpg',
-  '/lecturas-2.jpg',
-  '/lecturas-3.jpg',
-  '/lecturas-4.jpg',
-  '/lecturas-5.jpeg',
-  '/lecturas-6.jpg',
-  '/lecturas-7.jpeg',
-  '/lecturas-8.jpg',
-  '/lecturas-9.jpg',
+  '/lecturas-1.webp',
+  '/lecturas-2.webp',
+  '/lecturas-3.webp',
+  '/lecturas-4.webp',
+  '/lecturas-5.webp',
+  '/lecturas-6.webp',
+  '/lecturas-7.webp',
+  '/lecturas-8.webp',
+  '/lecturas-9.webp',
 ];
 
 // Los cuatro ciclos, sin imágenes: sólo dos tienen instagram, así que en vez de
@@ -88,7 +88,7 @@ const MANIJA_SUELTA = {
   mainLabel: 'Manija suelta',
   topLabel: '2018 - 2019',
   extraLabel: 'Humor, arte y feminismos',
-  img: '/manija-suelta.jpg',
+  img: '/manija-suelta.webp',
   link: 'https://www.instagram.com/manija_suelta/?hl=es',
   actionLabel: 'Ver instagram'
 };
